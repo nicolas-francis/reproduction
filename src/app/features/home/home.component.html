@@ -1,0 +1,42 @@
+<!-- Breadcrumb -->
+<div id="content">
+	<div class="row">
+		<sa-big-breadcrumbs [items]="['Home']" icon="home" class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></sa-big-breadcrumbs>
+	</div>
+
+	<!-- Sites -->
+	<div class="row">
+		<article class="col-sm-12 col-md-10 col-lg-2">
+			<h3>Sites</h3>
+			<table class="table">
+				<thead>
+					<tr>
+						<th scope="col">Site</th>
+					</tr>
+				</thead>
+				<tr *ngFor="let site of sites" (click)="getChannel(group)" >
+					<td>{{ site.nom }}</td>
+				</tr>
+			</table>
+		</article>
+
+		<!-- Last modified -->
+		<article class="col-sm-12 col-md-10 col-lg-4" *ngIf="1===1">
+			<h3>Last modified channel</h3>
+			<div class="table">
+				<thead>
+					<tr>
+						<th scope="col">Status</th>
+						<th scope="col">Channel name</th>
+						<th scope="col">Revision</th>
+					</tr>
+				</thead>
+				<tr *ngFor="let channel of channels" (click)="getDetail()" >
+					<td>{{ channel.status }}</td>
+					<td>{{ channel.name }}</td>
+					<td>{{ channel.revision }}</td>
+				</tr>
+			</div>
+		</article>
+	</div>
+</div>

@@ -1,0 +1,82 @@
+<div id="content">
+  <div class="row">
+    <sa-big-breadcrumbs [items]="['Home', 'Detail']" icon="home" class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></sa-big-breadcrumbs>
+  </div>
+
+  <!-- Connectors -->
+  <div class="row">
+    <article class="col-sm-12 col-md-10 col-lg-6">
+      <h3>Connectors</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Status</th>
+            <th scope="col">Name</th>
+            <th scope="col">Mode</th>
+            <th scope="col">Type</th>
+            <th scope="col">Site</th>
+            <th scope="col">System</th>
+          </tr>
+        </thead>
+        <tr *ngFor="let connector of connectors" >
+          <td>{{ connector.status }}</td>
+          <td>{{ connector.name }}</td>
+          <td>{{ connector.mode }}</td>
+          <td>{{ connector.type }}</td>
+          <td>{{ connector.site }}</td>
+          <td>{{ connector.system }}</td>
+        </tr>
+      </table>
+    </article>
+
+    <!-- Details -->
+    <article class="col-sm-12 col-md-10 col-lg-5">
+      <h3>Details</h3>
+      <div class="table">
+        <thead>
+          <tr>
+            <th scope="col">Channel information</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let detail of details">
+          <tr>
+            <th scope="col">Channel ID</th>
+            <td>{{ detail.channelid }}</td>
+          </tr>
+          <tr>
+            <th scope="col">Server ID</th>
+            <td>{{ detail.serverid }}</td>
+          </tr>
+          <tr>
+            <th scope="col">Last update</th>
+            <td>{{ detail.lastupdate }}</td>
+          </tr>
+          <tr>
+            <th scope="col">Description</th>
+            <td>
+              <textarea cols="50" rows="15">{{ detail.description }}</textarea>
+            </td>
+          </tr>
+        </tbody>
+        <br>
+        <thead>
+          <tr>
+            <th>Channel history</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="col">Revision</th>
+            <th scope="col">Date</th>
+          </tr>
+          <tr *ngFor="let hist of history" >
+            <td>{{ hist.revision }}</td>
+            <td>{{ hist.date }}</td>
+          </tr>
+        </tbody>
+      </div>
+    </article>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+[
+    {
+        "id": 1,
+        "status": "Enable",
+        "name": "sourceConnector",
+        "mode": "SOURCE",
+        "type": "ISante File Reader",
+        "site": "CSSHR",
+        "system": "eClinibase"
+    }, {
+        "id": 2,
+        "status": "Disable",
+        "name": "CobasIT_OUT",
+        "mode": "DESTINATION",
+        "type": "TCP sender",
+        "site": "CSSSMC",
+        "system": "ClinibaseCI"
+    }, {
+        "id": 3,
+        "status": "Deleted",
+        "name": "Cortex_SRV_OUT",
+        "mode": "DESTINATION",
+        "type": "ISante File Writer",
+        "site": "CSSHR",
+        "system": "mediClinic"
+    }
+]
