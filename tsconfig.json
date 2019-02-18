@@ -14,9 +14,6 @@
     "paths": {
       "@app/*": ["src/app/*"],
       "@env/*": ["src/environments/*"]
-    },
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true
+    }
   }
 }
