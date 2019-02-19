@@ -14,14 +14,14 @@
 						<th scope="col">Site</th>
 					</tr>
 				</thead>
-				<tr *ngFor="let site of sites" (click)="getChannel(group)" >
+				<tr *ngFor="let site of sites" (click)="getChannel(site)">
 					<td>{{ site.nom }}</td>
 				</tr>
 			</table>
 		</article>
 
 		<!-- Last modified -->
-		<article class="col-sm-12 col-md-10 col-lg-4" *ngIf="1===1">
+		<article class="col-sm-12 col-md-10 col-lg-4">
 			<h3>Last modified channel</h3>
 			<div class="table">
 				<thead>
