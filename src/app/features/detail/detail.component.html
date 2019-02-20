@@ -71,9 +71,9 @@
             <th scope="col">Revision</th>
             <th scope="col">Date</th>
           </tr>
-          <tr *ngFor="let hist of history" >
-            <td>{{ hist.revision }}</td>
-            <td>{{ hist.date }}</td>
+          <tr *ngFor="let history of historys" (click)="compare()">
+            <td>{{ history.revision }}</td>
+            <td>{{ history.date }}</td>
           </tr>
         </tbody>
       </div>

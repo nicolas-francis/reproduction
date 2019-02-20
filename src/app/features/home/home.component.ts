@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SitesService } from '../../services/sites.service';
+import { ChannelsService } from '../../services/channels.service';
 
 @Component({
   selector: 'app-home',
@@ -8,22 +10,55 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  //mettre dans un service et appeler le service ici
-  public sites = require('../../../assets/api/IS/sites.json');
-  public channels = require('../../../assets/api/IS/channels.json');
+  //variables utilisé pour le html
+  public sites;
+  public channels;
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router, 
+    private sitesService: SitesService,
+     private channelsService: ChannelsService
+    ) { }
 
-  ngOnInit() { }
-
-  getChannel() {
-    //changer pour faire apparêtre les channels reliés au site cliquer
-    //passer le group lors du click pour faire afficher les bon channels
-
-    this.router.navigate(['/']);
+  ngOnInit() {
+    this.getSites();
+    this.getChannels();
   }
 
+  //click sur un site
+  getChannel(site) {
+    //changer pour faire apparêtre les channels reliés au site cliquer
+    //passer le group lors du click pour faire afficher les bon channels
+    //this.getChannel(site.id);
+
+    console.log("ID clické : " + site.id);
+  }
+
+  //click sur un channel
   getDetail() {
     this.router.navigate(['detail']);
   }
+
+  //Tous les sites
+  getSites() {
+    return this.sitesService.getSites()
+                .subscribe(
+                  sites => {
+                  console.log(sites);
+                  this.sites = sites
+                  }
+                );
+  }
+
+  //Tous les channels
+  getChannels() {
+    return this.channelsService.getChannels()
+              .subscribe(
+                channels => {
+                console.log(channels);
+                this.channels = channels
+                }
+              );
+    }
+    
 }

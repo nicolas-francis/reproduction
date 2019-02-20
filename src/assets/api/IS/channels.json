@@ -8,11 +8,11 @@
         "id": 2,
         "status": "TRE01_AB",
         "name": "IS_SDI_asdqd",
-        "revision": 65
+        "revision": 60
     }, {
         "id": 3,
         "status": "TRE04_AE",
         "name": "IS_SDI_lwoke",
-        "revision": 65
+        "revision": 82
     }
 ]
