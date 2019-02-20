@@ -30,7 +30,7 @@
     </article>
 
     <!-- Details -->
-    <article class="col-sm-12 col-md-10 col-lg-5">
+    <article class="col-sm-7 col-md-7 col-lg-5">
       <h3>Details</h3>
       <div class="table">
         <thead>
@@ -71,7 +71,7 @@
             <th scope="col">Revision</th>
             <th scope="col">Date</th>
           </tr>
-          <tr *ngFor="let history of historys" (click)="compare()">
+          <tr *ngFor="let history of historys" (click)="openModal(template)">
             <td>{{ history.revision }}</td>
             <td>{{ history.date }}</td>
           </tr>
@@ -80,3 +80,43 @@
     </article>
   </div>
 </div>
+
+<!-- Compare -->
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Source Compare</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <article class="col-sm-12 col-md-10 col-lg-6">
+      <textarea rows="30" cols="50">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pulvinar egestas tristique. 
+        Phasellus felis nibh, pretium et lectus eu, suscipit pretium risus. Suspendisse potenti. Quisque a tristique 
+        orci, sagittis pretium leo. Cras nisi felis, egestas non aliquet non, posuere sed lectus. 
+        Praesent ac lectus quis diam consequat auctor et vitae ligula. Nunc at felis vel nunc dignissim 
+        luctus. Morbi gravida ante nec urna condimentum, id laoreet massa dignissim. Aliquam eget sagittis massa. 
+        Cras feugiat eget massa maximus sagittis. Nulla at neque eu ex tristique ultricies nec ut sem. Aliquam posuere 
+        enim vitae mauris vulputate posuere in ut sapien. Donec porta magna mi, in aliquam neque interdum quis.
+      </textarea>
+    </article>
+    <textarea rows="30" cols="50">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pulvinar egestas tristique. 
+      Phasellus felis nibh, pretium et lectus eu, suscipit pretium risus. Suspendisse potenti. Quisque a tristique 
+
+      orci, sagittis pretium leo. Cras nisi felis, egestas non aliquet non, posuere sed lectus. 
+      Praesent ac lectus quis diam consequat auctor et vitae ligula. Nunc at felis vel nunc dignissim 
+
+      
+      luctus. Morbi gravida ante nec urna condimentum, id laoreet massa dignissim. Aliquam eget sagittis massa. 
+      Cras feugiat eget massa maximus sagittis. Nulla at neque eu ex tristique ultricies nec ut sem. Aliquam posuere 
+      enim vitae mauris vulputate posuere in ut sapien. Donec porta magna mi, in aliquam neque interdum quis.
+    </textarea>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary pull-right" aria-label="Close" (click)="modalRef.hide()">
+      Close
+    </button>
+  </div>
+</ng-template>

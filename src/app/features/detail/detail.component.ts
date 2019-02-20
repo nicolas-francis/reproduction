@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { ConnectorsService } from '../../services/connectors.service';
+
+//Modal
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+
 import { DetailsService } from '../../services/details.service';
 import { HistoryService } from '../../services/history.service';
 
@@ -9,6 +14,8 @@ import { HistoryService } from '../../services/history.service';
   styleUrls: ['./detail.component.css']
 })
 export class DetailComponent implements OnInit {
+  //Modal
+  modalRef: BsModalRef;
 
   //variables utilisé pour le html
   public connectors;
@@ -18,7 +25,8 @@ export class DetailComponent implements OnInit {
   constructor(
     private connectorsService: ConnectorsService, 
     private detailsService: DetailsService, 
-    private historyService: HistoryService
+    private historyService: HistoryService,
+    private modalService: BsModalService
     ) { }
 
   ngOnInit() {
@@ -60,8 +68,9 @@ export class DetailComponent implements OnInit {
                 );
   }
 
-  compare() {
-    
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(
+      template, { backdrop: 'static', keyboard: false, class: 'modal-lg' });
   }
 
 }
