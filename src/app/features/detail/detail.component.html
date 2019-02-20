@@ -18,7 +18,7 @@
             <th scope="col">System</th>
           </tr>
         </thead>
-        <tr *ngFor="let connector of connectors" >
+        <tr *ngFor="let connector of connectors">
           <td>{{ connector.status }}</td>
           <td>{{ connector.name }}</td>
           <td>{{ connector.mode }}</td>
@@ -55,7 +55,7 @@
           <tr>
             <th scope="col">Description</th>
             <td>
-              <textarea cols="50" rows="15">{{ detail.description }}</textarea>
+              <textarea cols="50" rows="15" class="fixedTA">{{ detail.description }}</textarea>
             </td>
           </tr>
         </tbody>
@@ -91,7 +91,8 @@
   </div>
   <div class="modal-body">
     <article class="col-sm-12 col-md-10 col-lg-6">
-      <textarea rows="30" cols="50">
+      <b>Current Source</b>
+      <textarea rows="30" cols="55" class="fixedTA">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pulvinar egestas tristique. 
         Phasellus felis nibh, pretium et lectus eu, suscipit pretium risus. Suspendisse potenti. Quisque a tristique 
         orci, sagittis pretium leo. Cras nisi felis, egestas non aliquet non, posuere sed lectus. 
@@ -101,7 +102,8 @@
         enim vitae mauris vulputate posuere in ut sapien. Donec porta magna mi, in aliquam neque interdum quis.
       </textarea>
     </article>
-    <textarea rows="30" cols="50">
+    <b>Old revision</b>
+    <textarea rows="30" cols="55" class="fixedTA">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pulvinar egestas tristique. 
       Phasellus felis nibh, pretium et lectus eu, suscipit pretium risus. Suspendisse potenti. Quisque a tristique 
 
@@ -115,8 +117,6 @@
     </textarea>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-primary pull-right" aria-label="Close" (click)="modalRef.hide()">
-      Close
-    </button>
+    <button type="button" class="btn btn-primary pull-right" aria-label="Close" (click)="modalRef.hide()">Close</button>
   </div>
 </ng-template>
