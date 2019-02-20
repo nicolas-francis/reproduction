@@ -14,6 +14,9 @@
 						<th scope="col">Site</th>
 					</tr>
 				</thead>
+				<tr>
+					<td>Last Modified</td>
+				</tr>
 				<tr *ngFor="let site of sites" (click)="getChannel(site)">
 					<td>{{ site.nom }}</td>
 				</tr>
@@ -31,7 +34,7 @@
 						<th scope="col">Revision</th>
 					</tr>
 				</thead>
-				<tr *ngFor="let channel of channels" (click)="getDetail()" >
+				<tr *ngFor="let channel of channels" (click)="getDetail(channel)" >
 					<td>{{ channel.status }}</td>
 					<td>{{ channel.name }}</td>
 					<td>{{ channel.revision }}</td>

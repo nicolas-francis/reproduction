@@ -27,15 +27,12 @@ export class HomeComponent implements OnInit {
 
   //click sur un site
   getChannel(site) {
-    //changer pour faire apparêtre les channels reliés au site cliquer
-    //passer le group lors du click pour faire afficher les bon channels
-    //this.getChannel(site.id);
-
-    console.log("ID clické : " + site.id);
+    console.log("ID site : " + site.id);
   }
 
   //click sur un channel
-  getDetail() {
+  getDetail(channel) {
+    console.log("ID channel : " + channel.id);
     this.router.navigate(['detail']);
   }
 
