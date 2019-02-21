@@ -15,7 +15,7 @@
 					</tr>
 				</thead>
 				<tr>
-					<td>Last Modified</td>
+					<td class="selectedRow">Last Modified</td>
 				</tr>
 				<tr *ngFor="let site of sites" (click)="getChannel(site)">
 					<td>{{ site.nom }}</td>

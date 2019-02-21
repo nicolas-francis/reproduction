@@ -12,3 +12,8 @@
 .fixedTA {
     resize: none;
 }
+
+/* Clicked row */
+.selectedRow {
+    background-color: #FFEFAA;
+}
