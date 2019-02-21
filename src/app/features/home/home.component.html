@@ -34,8 +34,11 @@
 						<th scope="col">Revision</th>
 					</tr>
 				</thead>
-				<tr *ngFor="let channel of channels" (click)="getDetail(channel)" >
-					<td>{{ channel.status }}</td>
+				<tr *ngFor="let channel of channels" (click)="getDetail(channel)">
+					<td *ngIf="channel.status == 'Enable'"><span class="label label-success">{{ channel.status }}</span></td>
+					<td *ngIf="channel.status == 'Disable'"><span class="label label-default">{{ channel.status }}</span></td>
+					<td *ngIf="channel.status == 'Deleted'"><span class="label label-danger">{{ channel.status }}</span></td>
+					<td *ngIf="channel.status !== 'Deleted' && channel.status !== 'Disable' && channel.status !== 'Enable'">{{ channel.status }}</td>
 					<td>{{ channel.name }}</td>
 					<td>{{ channel.revision }}</td>
 				</tr>

@@ -19,7 +19,9 @@
           </tr>
         </thead>
         <tr *ngFor="let connector of connectors">
-          <td>{{ connector.status }}</td>
+          <td *ngIf="connector.status == 'Enable'"><span class="label label-success">{{ connector.status }}</span></td>
+          <td *ngIf="connector.status == 'Disable'"><span class="label label-default">{{ connector.status }}</span></td>
+          <td *ngIf="connector.status == 'Deleted'"><span class="label label-danger">{{ connector.status }}</span></td>
           <td>{{ connector.name }}</td>
           <td>{{ connector.mode }}</td>
           <td>{{ connector.type }}</td>
