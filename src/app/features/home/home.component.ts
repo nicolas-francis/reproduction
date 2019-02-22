@@ -11,11 +11,15 @@ import { ChannelsService } from '../../services/channels.service';
 export class HomeComponent implements OnInit {
   public sites;
   public channels;
+  public channelTemp;
+  selectedRow = {
+    high: 0
+  };
 
   constructor(
     private router: Router, 
     private sitesService: SitesService,
-     private channelsService: ChannelsService
+    private channelsService: ChannelsService
     ) { }
 
   ngOnInit() {
@@ -24,14 +28,21 @@ export class HomeComponent implements OnInit {
   }
 
   //Site click
-  getChannel(site) {
-    console.log("ID site : " + site.id);
+  getChannel(id) {
+    //Selectionner la row clické
+    this.selectedRow.high = id;
+    
+    //Changer les channels avec le site clické
+    this.channels = this.channelTemp;
+    this.channels = this.channels.filter(channel => channel.siteid === id);
   }
 
   //Channel click
   getDetail(channel) {
     console.log("ID channel : " + channel.id);
-    this.router.navigate(['detail']);
+
+    //Passer channel.id dans l'url pour loader la bonne page des connectors
+    this.router.navigate(['detail']);     /* /:id */
   }
 
   //All sites
@@ -47,11 +58,15 @@ export class HomeComponent implements OnInit {
 
   //All channels
   getChannels() {
+    //Selectionner la row clické
+    this.selectedRow.high = 0;
+
     return this.channelsService.getChannels()
               .subscribe(
                 channels => {
                 console.log(channels);
-                this.channels = channels
+                this.channels = channels;
+                this.channelTemp = this.channels;
                 }
               );
     }
