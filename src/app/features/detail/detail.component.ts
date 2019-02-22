@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { ConnectorsService } from '../../services/connectors.service';
+
+//Bootstrap modal
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+
 import { DetailsService } from '../../services/details.service';
 import { HistoryService } from '../../services/history.service';
 
@@ -9,8 +14,8 @@ import { HistoryService } from '../../services/history.service';
   styleUrls: ['./detail.component.css']
 })
 export class DetailComponent implements OnInit {
+  modalRef: BsModalRef;
 
-  //variables utilisé pour le html
   public connectors;
   public details;
   public historys;
@@ -18,7 +23,8 @@ export class DetailComponent implements OnInit {
   constructor(
     private connectorsService: ConnectorsService, 
     private detailsService: DetailsService, 
-    private historyService: HistoryService
+    private historyService: HistoryService,
+    private modalService: BsModalService
     ) { }
 
   ngOnInit() {
@@ -27,7 +33,7 @@ export class DetailComponent implements OnInit {
     this.getHistory();
   }
 
-  //tous les connecteurs
+  //All connectors
   getConnectors() {
     return this.connectorsService.getConnectors()
                 .subscribe(
@@ -38,7 +44,7 @@ export class DetailComponent implements OnInit {
                 );
   }
 
-  //tous les details
+  //All details
   getDetails() {
     return this.detailsService.getDetails()
                 .subscribe(
@@ -49,7 +55,7 @@ export class DetailComponent implements OnInit {
                 );
   }
 
-  //toute l'history
+  //All history
   getHistory() {
     return this.historyService.getHistory()
                 .subscribe(
@@ -60,8 +66,9 @@ export class DetailComponent implements OnInit {
                 );
   }
 
-  compare() {
-    
+  //Compare modal
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(
+      template, { backdrop: 'static', keyboard: false, class: 'modal-lg' });
   }
-
 }

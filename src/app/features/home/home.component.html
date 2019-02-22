@@ -6,7 +6,7 @@
 
 	<!-- Sites -->
 	<div class="row">
-		<article class="col-sm-12 col-md-10 col-lg-2">
+		<article class="col-sm-2 col-md-2 col-lg-2">
 			<h3>Sites</h3>
 			<table class="table">
 				<thead>
@@ -14,6 +14,9 @@
 						<th scope="col">Site</th>
 					</tr>
 				</thead>
+				<tr>
+					<td class="selectedRow">Last Modified</td>
+				</tr>
 				<tr *ngFor="let site of sites" (click)="getChannel(site)">
 					<td>{{ site.nom }}</td>
 				</tr>
@@ -21,7 +24,7 @@
 		</article>
 
 		<!-- Last modified -->
-		<article class="col-sm-12 col-md-10 col-lg-4">
+		<article class="col-sm-7 col-md-7 col-lg-4">
 			<h3>Last modified channel</h3>
 			<div class="table">
 				<thead>
@@ -31,8 +34,11 @@
 						<th scope="col">Revision</th>
 					</tr>
 				</thead>
-				<tr *ngFor="let channel of channels" (click)="getDetail()" >
-					<td>{{ channel.status }}</td>
+				<tr *ngFor="let channel of channels" (click)="getDetail(channel)">
+					<td *ngIf="channel.status == 'Enable'"><span class="label label-success">{{ channel.status }}</span></td>
+					<td *ngIf="channel.status == 'Disable'"><span class="label label-default">{{ channel.status }}</span></td>
+					<td *ngIf="channel.status == 'Deleted'"><span class="label label-danger">{{ channel.status }}</span></td>
+					<td *ngIf="channel.status !== 'Deleted' && channel.status !== 'Disable' && channel.status !== 'Enable'">{{ channel.status }}</td>
 					<td>{{ channel.name }}</td>
 					<td>{{ channel.revision }}</td>
 				</tr>

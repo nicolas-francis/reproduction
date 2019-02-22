@@ -6,13 +6,18 @@
         "revision": 65
     }, {
         "id": 2,
-        "status": "TRE01_AB",
-        "name": "IS_SDI_asdqd",
-        "revision": 60
+        "status": "Enable",
+        "name": "TEST NAME ENABLE",
+        "revision": 36
     }, {
         "id": 3,
-        "status": "TRE04_AE",
-        "name": "IS_SDI_lwoke",
-        "revision": 82
+        "status": "Disable",
+        "name": "TEST NAME DISABLE",
+        "revision": 92
+    }, {
+        "id": 4,
+        "status": "Deleted",
+        "name": "TEST NAME DELETED",
+        "revision": 12
     }
 ]

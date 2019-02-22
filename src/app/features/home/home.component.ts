@@ -9,8 +9,6 @@ import { ChannelsService } from '../../services/channels.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  //variables utilisé pour le html
   public sites;
   public channels;
 
@@ -25,21 +23,18 @@ export class HomeComponent implements OnInit {
     this.getChannels();
   }
 
-  //click sur un site
+  //Site click
   getChannel(site) {
-    //changer pour faire apparêtre les channels reliés au site cliquer
-    //passer le group lors du click pour faire afficher les bon channels
-    //this.getChannel(site.id);
-
-    console.log("ID clické : " + site.id);
+    console.log("ID site : " + site.id);
   }
 
-  //click sur un channel
-  getDetail() {
+  //Channel click
+  getDetail(channel) {
+    console.log("ID channel : " + channel.id);
     this.router.navigate(['detail']);
   }
 
-  //Tous les sites
+  //All sites
   getSites() {
     return this.sitesService.getSites()
                 .subscribe(
@@ -50,7 +45,7 @@ export class HomeComponent implements OnInit {
                 );
   }
 
-  //Tous les channels
+  //All channels
   getChannels() {
     return this.channelsService.getChannels()
               .subscribe(
@@ -60,5 +55,4 @@ export class HomeComponent implements OnInit {
                 }
               );
     }
-    
 }
