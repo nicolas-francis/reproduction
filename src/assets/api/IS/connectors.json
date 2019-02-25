@@ -1,6 +1,7 @@
 [
     {
-        "id": 1,
+        "id": 0,
+        "channelid": 1,
         "status": "Enable",
         "name": "sourceConnector",
         "mode": "SOURCE",
@@ -8,7 +9,8 @@
         "site": "CSSHR",
         "system": "eClinibase"
     }, {
-        "id": 2,
+        "id": 1,
+        "channelid": 1,
         "status": "Disable",
         "name": "CobasIT_OUT",
         "mode": "DESTINATION",
@@ -16,12 +18,94 @@
         "site": "CSSSMC",
         "system": "ClinibaseCI"
     }, {
-        "id": 3,
+        "id": 2,
+        "channelid": 2,
         "status": "Deleted",
         "name": "Cortex_SRV_OUT",
         "mode": "DESTINATION",
         "type": "ISante File Writer",
         "site": "CSSHR",
         "system": "mediClinic"
+    }, {
+        "id": 2,
+        "channelid": 2,
+        "status": "Deleted",
+        "name": "Cortex_SRV_OUT",
+        "mode": "DESTINATION",
+        "type": "ISante File Writer",
+        "site": "CSSHR",
+        "system": "mediClinic"
+    }, {
+        "id": 2,
+        "channelid": 3,
+        "status": "Enable",
+        "name": "Cortex_SRV_OUT",
+        "mode": "SOURCE",
+        "type": "ISante HTTP Writer",
+        "site": "CSSSPDS",
+        "system": "mediClinic"
+    }, {
+        "id": 2,
+        "channelid": 4,
+        "status": "Enable",
+        "name": "Sender_SMDW_IN",
+        "mode": "DESTINATION",
+        "type": "ISante HTTP Sender",
+        "site": "CSSHR",
+        "system": "mediClinic"
+    }, {
+        "id": 2,
+        "channelid": 5,
+        "status": "Enable",
+        "name": "Sider_FWE_LDO",
+        "mode": "DESTINATION",
+        "type": "ISante File Writer",
+        "site": "CSSSPDS",
+        "system": "mediClinic"
+    }, {
+        "id": 2,
+        "channelid": 6,
+        "status": "Deleted",
+        "name": "Isante_MFD_WDE",
+        "mode": "DESTINATION",
+        "type": "ISante File Reader",
+        "site": "CSSHR",
+        "system": "mediClinic"
+    }, {
+        "id": 2,
+        "channelid": 6,
+        "status": "Enable",
+        "name": "Cortex_SRV_OUT",
+        "mode": "SOURCE",
+        "type": "ISante File Writer",
+        "site": "CSSSHD",
+        "system": "mediClinic"
+    }, {
+        "id": 2,
+        "channelid": 7,
+        "status": "Deleted",
+        "name": "Cortex_SRV_OUT",
+        "mode": "DESTINATION",
+        "type": "ISante File Reader",
+        "site": "CSSHR",
+        "system": "mediClinic"
+    }, {
+        "id": 2,
+        "channelid": 7,
+        "status": "Disable",
+        "name": "Cortex_SRV_OUT",
+        "mode": "DESTINATION",
+        "type": "ISante File Writer",
+        "site": "CSSHR",
+        "system": "ClinibaseCI"
+    }, {
+        "id": 2,
+        "channelid": 7,
+        "status": "Deleted",
+        "name": "Cortex_SRV_OUT",
+        "mode": "SOURCE",
+        "type": "ISante File Writer",
+        "site": "CSSHR",
+        "system": "eClinibase"
     }
 ]

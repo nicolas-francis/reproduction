@@ -15,9 +15,9 @@
 					</tr>
 				</thead>
 				<tr>
-					<td class="selectedRow">Last Modified</td>
+					<td (click)="getChannels()" [ngClass]="{'selectedRow': selectedRow.high === 0 }">Last Modified</td>
 				</tr>
-				<tr *ngFor="let site of sites" (click)="getChannel(site)">
+				<tr *ngFor="let site of sites" (click)="getChannel(site.id)" [ngClass]="{ 'selectedRow': selectedRow.high === site.id }" id="site.id">
 					<td>{{ site.nom }}</td>
 				</tr>
 			</table>
