@@ -23,9 +23,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/css/diffview.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/difflib.js",
+              "src/assets/js/diffview.js"
+            ]
           },
           "configurations": {
             "production": {
