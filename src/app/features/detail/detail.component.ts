@@ -27,8 +27,8 @@ export class DetailComponent implements OnInit {
   public diff;
 
   //pour test début   vvvvvv
-  public vieux = "asd asd asd\nasd\nqwer";
-  public nouveau = "qqw qqwee\nasd";
+  public vieux = "asd asd asd\nasd\nqwer greww\nasd asd fewfewf behfhbef buwyhef iwejfsaiee beufhjdi  jshdfiwasd\nasd\nqwer grewwasd asd asd\nasd\nqwer grewwasd asd asd\nasd\nqwer greww\nasd asd asd\nasd\nqwer grewwasd asd asd\nasd\nqwer";
+  public nouveau = "qqw qqwee\nasdasd asd asd\nasd\nqwer greww\nasd asd fewfewf behfhbef buwyhef iwejfsaieeasdasdasdasdasdasdasd dsda beufhjdi  jshdfiwasd\nasd\nqwer grewwasd asd asd\nasdasd asd asd\nasd\nqwer greww\nasd asd fewfewf behfhbef buwyhef iwejfsaiee beufhjdi  jshdfiwasd\nasd\nqwer grewwasd asd asd\nasdasd asd asd\nasd\nqwer greww\nasd asd fewfewf behfhbef buwyhef iwejfsaiee beufhjdi  jshdfiwasd\nasd\nqwer grewwasd asd asd\nasdasd asd asd\nasd\nqwer greww\nasd asd fewfewf behfhbef buwyhef iwejfsaiee beufhjdi  jshdfiwasd\nasd\nqwer grewwasd asd asd\nasdasd asd asd\nasd\nqwer greww\nasd asd fewfewf behfhbef buwyhef iwejfsaiee beufhjdi  jshdfiwasd\nasd\nqwer grewwasd asd asd\nasdasd asd asd\nasd\nqwer greww\nasd asd fewfewf behfhbef buwyhef iwejfsaiee beufhjdi  jshdfiwasd\nasd\nqwer grewwasd asd asd\nasdasd asd asd\nasd\nqwer greww\nasd asd fewfewf behfhbef buwyhef iwejfsaiee beufhjdi  jshdfiwasd\nasd\nqwer grewwasd asd asd\nasdasd asd asd\nasd\nqwer greww\nasd asd fewfewf behfhbef buwyhef iwejfsaiee beufhjdi  jshdfiwasd\nasd\nqwer grewwasd asd asd\nasd";
   //pour test fin     ^^^^^^
 
   constructor(
@@ -81,7 +81,11 @@ export class DetailComponent implements OnInit {
   //Compare modal
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(
-      template, { backdrop: 'static', keyboard: false, class: 'modal-lg' });
+      template, { 
+        backdrop: true,
+        keyboard: false, 
+        class: 'modal-lg'
+      });
 
     //passer les deux versions des codes ici et enlever les variable de test
     this.compare(this.vieux, this.nouveau);
@@ -106,7 +110,6 @@ export class DetailComponent implements OnInit {
         contextSize: contextSize,
         viewType: 0
     });
-
 
     this.diff = this.diff.outerHTML;
   }
