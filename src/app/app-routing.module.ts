@@ -21,6 +21,10 @@ const routes: Routes = [
       {
         path: "detail",
         loadChildren: "./features/detail/detail.module#DetailModule"
+      },
+      {
+        path: "detail/:id",
+        loadChildren: "./features/detail/detail.module#DetailModule"
       }
     ]
   }

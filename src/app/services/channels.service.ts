@@ -13,15 +13,14 @@ export class ChannelsService {
   constructor(private http: HttpClient) { }
 
   //Tous les channels (loader au début)
-  getChannels (): Observable<Channel[]> {
+  getChannels(): Observable<Channel[]> {
     return this.http.get<Channel[]>(this.channels)
   }
-
-  /*
-  //un group de channel spécifique avec l'id
-  getChannel (id: number): Observable<Channel> {
-    const url = `${this.projetsUrl}/${id}`;
-    return this.http.get<Projet>(url);
+  
+  //Passe l'id du channel en paramètre pour loader les bons connecteurs
+  getChannel(id: number): Observable<Channel> {
+    const url = 'http://localhost:4200/#/detail/' + id;
+    return this.http.get<Channel>(url);
   }
-  */
+  
 }

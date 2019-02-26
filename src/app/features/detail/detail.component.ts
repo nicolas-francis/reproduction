@@ -21,14 +21,15 @@ export class DetailComponent implements OnInit {
   modalRef: BsModalRef;
 
   public connectors;
+  public connectorsTemp;
   public details;
   public historys;
   public diff;
 
-  //pour test début   vvvvvv
+  //pour compare test début   vvvvvv
   public vieux = "asd asd asd\nasd\nqwer greww\nasd asd fewfewf behfhbef buwyhef iwejfsaiee beufhjdi  jshdfiwasd\nasd\nqwer grewwasd asd asd\nasd\nqwer grewwasd asd asd\nasd\nqwer greww\nasd asd asd\nasd\nqwer grewwasd asd asd\nasd\nqwer";
   public nouveau = "qqw qqwee\nasdasd asd asd\nasd\nqwer greww\nasd asd fewfewf behfhbef buwyhef iwejfsaieeasdasdasdasdasdasdasd dsda beufhjdi  jshdfiwasd\nasd\nqwer grewwasd asd asd\nasdasd asd asd\nasd\nqwer greww\nasd asd fewfewf behfhbef buwyhef iwejfsaiee beufhjdi  jshdfiwasd\nasd\nqwer grewwasd asd asd\nasdasd asd asd\nasd\nqwer greww\nasd asd fewfewf behfhbef buwyhef iwejfsaiee beufhjdi  jshdfiwasd\nasd\nqwer grewwasd asd asd\nasdasd asd asd\nasd\nqwer greww\nasd asd fewfewf behfhbef buwyhef iwejfsaiee beufhjdi  jshdfiwasd\nasd\nqwer grewwasd asd asd\nasdasd asd asd\nasd\nqwer greww\nasd asd fewfewf behfhbef buwyhef iwejfsaiee beufhjdi  jshdfiwasd\nasd\nqwer grewwasd asd asd\nasdasd asd asd\nasd\nqwer greww\nasd asd fewfewf behfhbef buwyhef iwejfsaiee beufhjdi  jshdfiwasd\nasd\nqwer grewwasd asd asd\nasdasd asd asd\nasd\nqwer greww\nasd asd fewfewf behfhbef buwyhef iwejfsaiee beufhjdi  jshdfiwasd\nasd\nqwer grewwasd asd asd\nasdasd asd asd\nasd\nqwer greww\nasd asd fewfewf behfhbef buwyhef iwejfsaiee beufhjdi  jshdfiwasd\nasd\nqwer grewwasd asd asd\nasd";
-  //pour test fin     ^^^^^^
+  //pour compare test fin     ^^^^^^
 
   constructor(
     private connectorsService: ConnectorsService, 
@@ -38,7 +39,6 @@ export class DetailComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.compare(this.vieux, this.nouveau);
     this.getConnectors();
     this.getDetails();
     this.getHistory();
@@ -87,6 +87,7 @@ export class DetailComponent implements OnInit {
       });
 
     //passer les deux versions des codes ici et enlever les variable de test
+    //passer la date aussi pour les différentes versions
     this.compare(this.vieux, this.nouveau);
   }
 
