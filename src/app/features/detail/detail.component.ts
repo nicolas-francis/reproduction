@@ -1,9 +1,13 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { ConnectorsService } from '../../services/connectors.service';
 
-//Bootstrap modal
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+
+import '../../../assets/js/difflib.js';
+import '../../../assets/js/diffview.js';
+declare var difflib: any;
+declare var diffview: any;
 
 import { DetailsService } from '../../services/details.service';
 import { HistoryService } from '../../services/history.service';
@@ -19,6 +23,12 @@ export class DetailComponent implements OnInit {
   public connectors;
   public details;
   public historys;
+  public diff;
+
+  //pour test début   vvvvvv
+  public vieux = "asd asd asd\nasd\nqwer greww\nasd asd fewfewf behfhbef buwyhef iwejfsaiee beufhjdi  jshdfiwasd\nasd\nqwer grewwasd asd asd\nasd\nqwer grewwasd asd asd\nasd\nqwer greww\nasd asd asd\nasd\nqwer grewwasd asd asd\nasd\nqwer";
+  public nouveau = "qqw qqwee\nasdasd asd asd\nasd\nqwer greww\nasd asd fewfewf behfhbef buwyhef iwejfsaieeasdasdasdasdasdasdasd dsda beufhjdi  jshdfiwasd\nasd\nqwer grewwasd asd asd\nasdasd asd asd\nasd\nqwer greww\nasd asd fewfewf behfhbef buwyhef iwejfsaiee beufhjdi  jshdfiwasd\nasd\nqwer grewwasd asd asd\nasdasd asd asd\nasd\nqwer greww\nasd asd fewfewf behfhbef buwyhef iwejfsaiee beufhjdi  jshdfiwasd\nasd\nqwer grewwasd asd asd\nasdasd asd asd\nasd\nqwer greww\nasd asd fewfewf behfhbef buwyhef iwejfsaiee beufhjdi  jshdfiwasd\nasd\nqwer grewwasd asd asd\nasdasd asd asd\nasd\nqwer greww\nasd asd fewfewf behfhbef buwyhef iwejfsaiee beufhjdi  jshdfiwasd\nasd\nqwer grewwasd asd asd\nasdasd asd asd\nasd\nqwer greww\nasd asd fewfewf behfhbef buwyhef iwejfsaiee beufhjdi  jshdfiwasd\nasd\nqwer grewwasd asd asd\nasdasd asd asd\nasd\nqwer greww\nasd asd fewfewf behfhbef buwyhef iwejfsaiee beufhjdi  jshdfiwasd\nasd\nqwer grewwasd asd asd\nasdasd asd asd\nasd\nqwer greww\nasd asd fewfewf behfhbef buwyhef iwejfsaiee beufhjdi  jshdfiwasd\nasd\nqwer grewwasd asd asd\nasd";
+  //pour test fin     ^^^^^^
 
   constructor(
     private connectorsService: ConnectorsService, 
@@ -28,6 +38,7 @@ export class DetailComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    this.compare(this.vieux, this.nouveau);
     this.getConnectors();
     this.getDetails();
     this.getHistory();
@@ -69,6 +80,36 @@ export class DetailComponent implements OnInit {
   //Compare modal
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(
-      template, { backdrop: 'static', keyboard: false, class: 'modal-lg' });
+      template, { 
+        backdrop: true,
+        keyboard: false, 
+        class: 'modal-lg'
+      });
+
+    //passer les deux versions des codes ici et enlever les variable de test
+    this.compare(this.vieux, this.nouveau);
+  }
+
+  compare(vieux, nouveau) {
+    var base = difflib.stringAsLines(vieux);
+    var newtxt = difflib.stringAsLines(nouveau);
+
+    var sm = new difflib.SequenceMatcher(base, newtxt);
+
+    var opcodes = sm.get_opcodes();
+    var contextSize = 6;
+    contextSize = contextSize ? contextSize : null;
+    
+    this.diff = diffview.buildView({
+        baseTextLines: base,
+        newTextLines: newtxt,
+        opcodes: opcodes,
+        baseTextName: "Current Source",
+        newTextName: "Old Revision",
+        contextSize: contextSize,
+        viewType: 0
+    });
+
+    this.diff = this.diff.outerHTML;
   }
 }

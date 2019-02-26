@@ -91,32 +91,8 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <div class="modal-body">
-    <article class="col-sm-12 col-md-10 col-lg-6">
-      <b>Current Source</b>
-      <textarea rows="30" cols="55" class="fixedTA">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pulvinar egestas tristique. 
-        Phasellus felis nibh, pretium et lectus eu, suscipit pretium risus. Suspendisse potenti. Quisque a tristique 
-        orci, sagittis pretium leo. Cras nisi felis, egestas non aliquet non, posuere sed lectus. 
-        Praesent ac lectus quis diam consequat auctor et vitae ligula. Nunc at felis vel nunc dignissim 
-        luctus. Morbi gravida ante nec urna condimentum, id laoreet massa dignissim. Aliquam eget sagittis massa. 
-        Cras feugiat eget massa maximus sagittis. Nulla at neque eu ex tristique ultricies nec ut sem. Aliquam posuere 
-        enim vitae mauris vulputate posuere in ut sapien. Donec porta magna mi, in aliquam neque interdum quis.
-      </textarea>
-    </article>
-    <b>Old revision</b>
-    <textarea rows="30" cols="55" class="fixedTA">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pulvinar egestas tristique. 
-      Phasellus felis nibh, pretium et lectus eu, suscipit pretium risus. Suspendisse potenti. Quisque a tristique 
-
-      orci, sagittis pretium leo. Cras nisi felis, egestas non aliquet non, posuere sed lectus. 
-      Praesent ac lectus quis diam consequat auctor et vitae ligula. Nunc at felis vel nunc dignissim 
-
-      
-      luctus. Morbi gravida ante nec urna condimentum, id laoreet massa dignissim. Aliquam eget sagittis massa. 
-      Cras feugiat eget massa maximus sagittis. Nulla at neque eu ex tristique ultricies nec ut sem. Aliquam posuere 
-      enim vitae mauris vulputate posuere in ut sapien. Donec porta magna mi, in aliquam neque interdum quis.
-    </textarea>
+  <div class="modal-body" [outerHTML]="diff">
+      <!-- Compare is shown here-->
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-primary pull-right" aria-label="Close" (click)="modalRef.hide()">Close</button>
