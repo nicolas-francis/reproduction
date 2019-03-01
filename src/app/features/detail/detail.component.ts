@@ -21,15 +21,16 @@ export class DetailComponent implements OnInit {
   modalRef: BsModalRef;
 
   public connectors;
-  public connectorsTemp;
+  public endUrl;
+  public verifNumber;
   public details;
   public historys;
   public diff;
 
-  //pour compare test début   vvvvvv
-  public vieux = "asd asd asd\nasd\nqwer greww\nasd asd fewfewf behfhbef buwyhef iwejfsaiee beufhjdi  jshdfiwasd\nasd\nqwer grewwasd asd asd\nasd\nqwer grewwasd asd asd\nasd\nqwer greww\nasd asd asd\nasd\nqwer grewwasd asd asd\nasd\nqwer";
-  public nouveau = "qqw qqwee\nasdasd asd asd\nasd\nqwer greww\nasd asd fewfewf behfhbef buwyhef iwejfsaieeasdasdasdasdasdasdasd dsda beufhjdi  jshdfiwasd\nasd\nqwer grewwasd asd asd\nasdasd asd asd\nasd\nqwer greww\nasd asd fewfewf behfhbef buwyhef iwejfsaiee beufhjdi  jshdfiwasd\nasd\nqwer grewwasd asd asd\nasdasd asd asd\nasd\nqwer greww\nasd asd fewfewf behfhbef buwyhef iwejfsaiee beufhjdi  jshdfiwasd\nasd\nqwer grewwasd asd asd\nasdasd asd asd\nasd\nqwer greww\nasd asd fewfewf behfhbef buwyhef iwejfsaiee beufhjdi  jshdfiwasd\nasd\nqwer grewwasd asd asd\nasdasd asd asd\nasd\nqwer greww\nasd asd fewfewf behfhbef buwyhef iwejfsaiee beufhjdi  jshdfiwasd\nasd\nqwer grewwasd asd asd\nasdasd asd asd\nasd\nqwer greww\nasd asd fewfewf behfhbef buwyhef iwejfsaiee beufhjdi  jshdfiwasd\nasd\nqwer grewwasd asd asd\nasdasd asd asd\nasd\nqwer greww\nasd asd fewfewf behfhbef buwyhef iwejfsaiee beufhjdi  jshdfiwasd\nasd\nqwer grewwasd asd asd\nasdasd asd asd\nasd\nqwer greww\nasd asd fewfewf behfhbef buwyhef iwejfsaiee beufhjdi  jshdfiwasd\nasd\nqwer grewwasd asd asd\nasd";
-  //pour compare test fin     ^^^^^^
+  //pour compare test début à enlever   vvvvvv
+  public vieux = "VIEUX - asd asd asd\nasd\nqwer greww\nasd asd fewfewf behfhbef buwyhef iwejfsaiee beufhjdi jshdfiwasd\nasd\nqwer grewwasd asd asd\nasd\nqwer grewwasd asd asd\nasd\nqwer greww\nasd asd asd\nasd\nqwer grewwasd asd asd\nasd\nqwer";
+  public nouveau = "NOUVEAU - qqw qqwee\nasdasd asd asd\nasd\nqwer greww\n jshdfiwasd\nasd\nqwer jshdfiwasd\nasd\nqwer iwejfsaiee beufhjdi  jshdfiwasd\nasd\nqwer grewwasd asd asd\nasdasd asd asd\nasd\nqwer greww\nasd asd fewfewf behfhbef buwyhef iwejfsaiee beufhjdi  jshdfiwasd\nasd\nqwer grewwasd asd asd\nasdasd asd asd\nasd\nqwer greww\nasd asd fewfewf behfhbef buwyhef iwejfsaiee beufhjdi  jshdfiwasd\nasd\nqwer grewwasd asd asd\nasd";
+  //pour compare test fin à enlever     ^^^^^^
 
   constructor(
     private connectorsService: ConnectorsService, 
@@ -39,6 +40,11 @@ export class DetailComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    //Prend l'id dans l'url
+    this.endUrl = window.location.href;
+    this.endUrl = this.endUrl.substr(window.location.href.lastIndexOf('/') + 1);
+    this.verifNumber = +this.endUrl;
+
     this.getConnectors();
     this.getDetails();
     this.getHistory();
@@ -50,7 +56,8 @@ export class DetailComponent implements OnInit {
                 .subscribe(
                   connectors => {
                   console.log(connectors);
-                  this.connectors = connectors
+                  this.connectors = connectors;
+                  this.filterCon();
                   }
                 );
   }
@@ -61,7 +68,8 @@ export class DetailComponent implements OnInit {
                 .subscribe(
                   details => {
                   console.log(details);
-                  this.details = details
+                  this.details = details;
+                  this.filterDet();
                   }
                 );
   }
@@ -72,7 +80,8 @@ export class DetailComponent implements OnInit {
                 .subscribe(
                   historys => {
                   console.log(historys);
-                  this.historys = historys
+                  this.historys = historys;
+                  this.filterHist();
                   }
                 );
   }
@@ -91,7 +100,8 @@ export class DetailComponent implements OnInit {
     this.compare(this.vieux, this.nouveau);
   }
 
-  compare(vieux, nouveau) {
+  //Utilise la library du compare
+  compare(nouveau, vieux) {
     var base = difflib.stringAsLines(vieux);
     var newtxt = difflib.stringAsLines(nouveau);
 
@@ -112,5 +122,20 @@ export class DetailComponent implements OnInit {
     });
 
     this.diff = this.diff.outerHTML;
+  }
+
+  //Filtre les connecteurs pour afficher le bon avec le click fait avant
+  filterCon() {
+    this.connectors = this.connectors.filter(connector => connector.channelid === this.verifNumber);
+  }
+
+  //Filtre les details pour afficher le bon avec le click fait avant
+  filterDet() {
+    this.details = this.details.filter(detail => detail.channelid === this.verifNumber);
+  }
+
+  //Filtre les channel history pour afficher le bon avec le click fait avant
+  filterHist() {
+    this.historys = this.historys.filter(history => history.channelid === this.verifNumber);
   }
 }

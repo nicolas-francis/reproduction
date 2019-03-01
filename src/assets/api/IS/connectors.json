@@ -101,7 +101,7 @@
     }, {
         "id": 2,
         "channelid": 7,
-        "status": "Deleted",
+        "status": "Enable",
         "name": "Cortex_SRV_OUT",
         "mode": "SOURCE",
         "type": "ISante File Writer",
