@@ -39,10 +39,8 @@ export class HomeComponent implements OnInit {
 
   //Channel click
   getDetail(channel) {
-    console.log("ID channel : " + channel.id);
-
-    //Passer channel.id dans l'url pour loader la bonne page des connectors
-    this.router.navigate(['detail']);     /* /:id */
+    this.channelsService.getChannel(channel.id);
+    this.router.navigate(['detail/' + channel.id]);
   }
 
   //All sites
