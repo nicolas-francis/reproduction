@@ -1,5 +1,5 @@
 {
-  "name": "@nicolas-francis/reproduction",
+  "name": "smartadmin-angular-seed",
   "version": "0.8.1",
   "scripts": {
     "ng": "ng",
